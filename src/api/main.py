@@ -7,7 +7,8 @@ from pathlib import Path
 import pandas as pd
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
+from fastapi.staticfiles import StaticFiles
 
 from src.models.base import BasePredictor
 from src.simulation.monte_carlo import TeamStateSnapshot
@@ -68,8 +69,14 @@ app.include_router(teams_router)
 app.include_router(results_router)
 
 
+FRONTEND_DIR = Path(__file__).parents[2] / "frontend"
+if FRONTEND_DIR.exists():
+    app.mount("/ui", StaticFiles(directory=str(FRONTEND_DIR), html=True), name="frontend")
+
 @app.get("/", tags=["health"])
 def root():
+    if FRONTEND_DIR.exists():
+        return RedirectResponse("/ui/index.html")
     return {"status": "ok", "service": "FIFA Match Predictor", "version": "1.0.0"}
 
 
