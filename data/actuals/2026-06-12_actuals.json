@@ -1,0 +1,22 @@
+[
+  {
+    "date": "2026-06-12",
+    "home_team": "Canada",
+    "away_team": "Bosnia and Herzegovina",
+    "home_score": 1,
+    "away_score": 1,
+    "result": "D",
+    "source_url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/canada-bosnia-and-herzegovina-highlights-match-report?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-12",
+    "home_team": "USA",
+    "away_team": "Paraguay",
+    "home_score": 4,
+    "away_score": 1,
+    "result": "H",
+    "source_url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/usa-paraguay-highlights-match-report?utm_source=openai",
+    "confidence": "medium"
+  }
+]

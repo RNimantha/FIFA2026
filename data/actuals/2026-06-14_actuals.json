@@ -1,0 +1,42 @@
+[
+  {
+    "date": "2026-06-14",
+    "home_team": "Ivory Coast",
+    "away_team": "Ecuador",
+    "home_score": 1,
+    "away_score": 0,
+    "result": "H",
+    "source_url": "https://www.washingtonpost.com/sports/soccer/2026/06/14/world-cup-ivory-coast-ecuador-score/cc00963e-6858-11f1-830e-133d20cadd28_story.html?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-14",
+    "home_team": "Germany",
+    "away_team": "Curacao",
+    "home_score": 7,
+    "away_score": 1,
+    "result": "H",
+    "source_url": "https://www.skysports.com/football/news/11095/13552702/world-cup-2026-germany-7-1-curacao-caribbean-debutants-given-a-thumping-in-group-e?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-14",
+    "home_team": "Netherlands",
+    "away_team": "Japan",
+    "home_score": 2,
+    "away_score": 2,
+    "result": "D",
+    "source_url": "https://betora.app/result/world-cup/netherlands-vs-japan-2026-06-14?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-14",
+    "home_team": "Sweden",
+    "away_team": "Tunisia",
+    "home_score": 5,
+    "away_score": 1,
+    "result": "H",
+    "source_url": "https://www.skysports.com/football/news/33694/13552698/world-cup-2026-sweden-5-1-tunisia-viktor-gyokeres-and-alexander-isak-guide-graham-potters-side-to-victory?utm_source=openai",
+    "confidence": "medium"
+  }
+]

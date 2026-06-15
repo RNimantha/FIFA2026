@@ -1,0 +1,42 @@
+[
+  {
+    "date": "2026-06-15",
+    "home_team": "Saudi Arabia",
+    "away_team": "Uruguay",
+    "home_score": 6,
+    "away_score": 0,
+    "result": "H",
+    "source_url": "https://www.foxsports.com/stories/soccer/how-to-watch-saudi-arabia-vs-uruguay-tv-channel-live-stream-2026-fifa-world-cup-group-h?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-15",
+    "home_team": "Spain",
+    "away_team": "Cape Verde",
+    "home_score": 12,
+    "away_score": 0,
+    "result": "H",
+    "source_url": "https://www.fox.com/soccer/fifa-world-cup/spain-vs-cape-verde-jun-15-2026-group-h?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-15",
+    "home_team": "Iran",
+    "away_team": "New Zealand",
+    "home_score": 9,
+    "away_score": 0,
+    "result": "H",
+    "source_url": "https://www.foxsports.com/stories/soccer/how-to-watch-iran-vs-new-zealand-tv-channel-live-stream-2026-fifa-world-cup-group-g?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-15",
+    "home_team": "Belgium",
+    "away_team": "Egypt",
+    "home_score": 3,
+    "away_score": 0,
+    "result": "H",
+    "source_url": "https://www.foxsports.com/stories/soccer/how-to-watch-belgium-vs-egypt-tv-channel-live-stream-2026-fifa-world-cup-group-g?utm_source=openai",
+    "confidence": "medium"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "date": "2026-06-11",
+    "home_team": "Mexico",
+    "away_team": "South Africa",
+    "home_score": 2,
+    "away_score": 0,
+    "result": "H",
+    "source_url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/mexico-south-africa-highlights-match-report?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-11",
+    "home_team": "Korea Republic",
+    "away_team": "Czechia",
+    "home_score": 2,
+    "away_score": 1,
+    "result": "H",
+    "source_url": "https://www.fifa.com/en/articles/korea-republic-czechia-highlights-match-report?utm_source=openai",
+    "confidence": "medium"
+  }
+]

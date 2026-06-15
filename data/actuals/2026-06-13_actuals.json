@@ -1,0 +1,42 @@
+[
+  {
+    "date": "2026-06-13",
+    "home_team": "Haiti",
+    "away_team": "Scotland",
+    "home_score": 1,
+    "away_score": 0,
+    "result": "H",
+    "source_url": "https://www.washingtonpost.com/sports/soccer/2026/06/13/haiti-scotland-world-cup-score/0e9d5f78-679f-11f1-bdd4-805ebb99a693_story.html?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-13",
+    "home_team": "Australia",
+    "away_team": "Turkey",
+    "home_score": 2,
+    "away_score": 0,
+    "result": "H",
+    "source_url": "https://www.skysports.com/football/news/12098/13552630/world-cup-2026-australia-2-0-turkey-socceroos-make-winning-start-to-group-d-campaign-in-vancouver?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-13",
+    "home_team": "Brazil",
+    "away_team": "Morocco",
+    "home_score": 1,
+    "away_score": 1,
+    "result": "D",
+    "source_url": "https://www.skysports.com/football/brazil-vs-morocco/report/549771?utm_source=openai",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-13",
+    "home_team": "Qatar",
+    "away_team": "Switzerland",
+    "home_score": 1,
+    "away_score": 1,
+    "result": "D",
+    "source_url": "https://www.gmanetwork.com/news/sports/football/991383/2026-fifa-world-cup-qatar-vs-switzerland-june-13-2026/story/?utm_source=openai",
+    "confidence": "medium"
+  }
+]

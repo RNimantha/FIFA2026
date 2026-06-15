@@ -1,0 +1,24 @@
+{
+  "date": "2026-06-15",
+  "total_matches": 4,
+  "correct_predictions": 3,
+  "accuracy": 0.75,
+  "avg_goal_mae": 3.4087,
+  "log_loss": 0.8802,
+  "mistakes": [
+    {
+      "home_team": "Saudi Arabia",
+      "away_team": "Uruguay",
+      "predicted": "A",
+      "actual": "H",
+      "predicted_prob": 0.69,
+      "error_type": "overconfident_wrong"
+    }
+  ],
+  "improvement_suggestions": [
+    "Incorporate player-level data such as recent performance metrics and injuries to better account for unexpected outcomes.",
+    "Adjust the model's confidence calibration by implementing techniques like isotonic regression to better align predicted probabilities with actual outcomes.",
+    "Include a feature that captures the impact of travel distance and time zone differences on team performance, especially for neutral venue matches."
+  ],
+  "model_confidence_calibration": "well-calibrated"
+}

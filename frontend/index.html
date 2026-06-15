@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIFA World Cup 2026 | Match Predictor</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="app-header">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-badge">
+        <span class="logo-year">26</span>
+        <span class="logo-trophy">🏆</span>
+      </div>
+      <div class="logo-text">
+        <span class="logo-main">FIFA WORLD CUP 2026</span>
+        <span class="logo-sep">|</span>
+        <span class="logo-sub">MATCH PREDICTOR</span>
+      </div>
+    </div>
+    <nav class="top-nav">
+      <a class="nav-link active" data-tab="dashboard">⌂ Dashboard</a>
+      <a class="nav-link" data-tab="schedule">☰ Schedule</a>
+      <a class="nav-link" data-tab="predictor">◎ Predictor</a>
+      <a class="nav-link" data-tab="rankings">⚑ Rankings</a>
+      <a class="nav-link" data-tab="results">✓ Results</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MAIN LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="card date-filter-card">
+      <div class="card-title">FILTER MATCHES BY DATE</div>
+      <div class="date-input-wrap">
+        <input type="text" id="dateDisplay" class="date-input" readonly />
+        <span class="date-icon">📅</span>
+      </div>
+      <div class="mini-cal">
+        <div class="cal-header">
+          <button class="cal-nav-btn" id="prevWeek">&#8249;</button>
+          <span class="cal-month-label" id="calMonthLabel">June 20, 2026</span>
+          <button class="cal-nav-btn" id="nextWeek">&#8250;</button>
+        </div>
+        <div class="cal-days" id="calDays"></div>
+        <div class="cal-selected-label" id="calSelectedLabel">Selected Date: June 20, 2026</div>
+      </div>
+    </div>
+
+    <!-- Sidebar quick stats (shown in Dashboard/Schedule) -->
+    <div class="card sidebar-stats" id="sidebarStats">
+      <div class="card-title">TODAY'S STATS</div>
+      <div class="stat-item"><span class="stat-label">Matches</span><span class="stat-value" id="statMatchCount">—</span></div>
+      <div class="stat-item"><span class="stat-label">Groups</span><span class="stat-value" id="statGroupCount">—</span></div>
+      <div class="stat-item"><span class="stat-label">Top Pick</span><span class="stat-value" id="statTopPick">—</span></div>
+    </div>
+
+    <!-- API status -->
+    <div class="api-status" id="apiStatus">
+      <span class="status-dot" id="statusDot"></span>
+      <span id="statusText">Connecting to AI...</span>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- DASHBOARD TAB -->
+    <div id="tab-dashboard" class="tab-pane active">
+      <div class="content-header">
+        <h2 class="matches-title" id="matchesTitle">MATCHES FOR —</h2>
+      </div>
+      <div class="matches-grid" id="matchesGrid">
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <p>Loading matches...</p>
+        </div>
+      </div>
+
+      <!-- LIVE RESULTS FEED -->
+      <div class="content-header" style="margin-top:32px">
+        <h2 class="matches-title">COMPLETED MATCH RESULTS</h2>
+        <span class="live-badge">LIVE</span>
+      </div>
+      <div class="card live-results-card">
+        <div class="live-results-controls">
+          <div class="group-filters" id="groupFilters"></div>
+          <span class="results-refresh-note" id="liveRefreshNote">Auto-refreshes every 60s</span>
+        </div>
+        <div id="liveResultsFeed">
+          <div class="loading-state" style="padding:20px"><div class="spinner"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCHEDULE TAB -->
+    <div id="tab-schedule" class="tab-pane">
+      <div class="content-header">
+        <h2 class="matches-title">FULL GROUP STAGE SCHEDULE</h2>
+      </div>
+      <div class="schedule-grid" id="scheduleGrid"></div>
+    </div>
+
+    <!-- PREDICTOR TAB -->
+    <div id="tab-predictor" class="tab-pane">
+      <div class="content-header">
+        <h2 class="matches-title">CUSTOM MATCH PREDICTOR</h2>
+      </div>
+      <div class="predictor-layout">
+        <div class="card predictor-form">
+          <div class="card-title">SELECT MATCH</div>
+          <div class="predictor-fields">
+            <div class="field-group">
+              <label>Home Team</label>
+              <select id="predHome" class="team-select"></select>
+            </div>
+            <div class="vs-badge">VS</div>
+            <div class="field-group">
+              <label>Away Team</label>
+              <select id="predAway" class="team-select"></select>
+            </div>
+          </div>
+          <div class="predictor-options">
+            <div class="field-group">
+              <label>Tournament</label>
+              <select id="predTournament" class="team-select">
+                <option>FIFA World Cup</option>
+                <option>FIFA World Cup qualification</option>
+                <option>UEFA Euro</option>
+                <option>Copa América</option>
+                <option>Friendly</option>
+              </select>
+            </div>
+            <div class="field-group checkbox-group">
+              <label>
+                <input type="checkbox" id="predNeutral" checked />
+                Neutral Venue
+              </label>
+            </div>
+          </div>
+          <button class="predict-btn" id="predictBtn">⚡ PREDICT MATCH</button>
+        </div>
+        <div id="predictorResult"></div>
+      </div>
+    </div>
+
+    <!-- RANKINGS TAB -->
+    <div id="tab-rankings" class="tab-pane">
+      <div class="content-header">
+        <h2 class="matches-title">ELO RANKINGS — ALL TEAMS</h2>
+      </div>
+      <div class="card" style="overflow:auto">
+        <table class="rankings-table" id="rankingsTable">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Team</th>
+              <th>ELO Rating</th>
+              <th>ELO Bar</th>
+            </tr>
+          </thead>
+          <tbody id="rankingsBody">
+            <tr><td colspan="4" class="loading-cell">Loading rankings...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- RESULTS TAB -->
+    <div id="tab-results" class="tab-pane">
+      <div class="content-header">
+        <h2 class="matches-title">PREDICTIONS VS ACTUAL RESULTS</h2>
+      </div>
+
+      <!-- Accuracy summary bar -->
+      <div class="card results-summary-bar" id="resultsSummaryBar">
+        <div class="rs-stat">
+          <span class="rs-label">Date</span>
+          <span class="rs-value" id="rsDate">—</span>
+        </div>
+        <div class="rs-stat">
+          <span class="rs-label">Correct</span>
+          <span class="rs-value accent" id="rsCorrect">—</span>
+        </div>
+        <div class="rs-stat">
+          <span class="rs-label">Accuracy</span>
+          <span class="rs-value" id="rsAccuracy">—</span>
+        </div>
+        <div class="rs-stat">
+          <span class="rs-label">Goal MAE</span>
+          <span class="rs-value" id="rsGoalMAE">—</span>
+        </div>
+        <div class="rs-stat">
+          <span class="rs-label">7-Day Trend</span>
+          <span class="rs-value" id="rsTrend">—</span>
+        </div>
+        <div class="rs-stat">
+          <span class="rs-label">Model</span>
+          <span class="rs-value small" id="rsModel">—</span>
+        </div>
+      </div>
+
+      <!-- Date selector for results -->
+      <div class="card results-controls">
+        <div class="results-date-row">
+          <label>View Date:</label>
+          <input type="date" id="resultsDateInput" class="results-date-input" />
+          <button class="predict-btn" id="loadResultsBtn" style="width:auto;padding:8px 20px">Load</button>
+          <span class="results-refresh-note" id="resultsRefreshNote">Auto-refreshes every 60s</span>
+        </div>
+      </div>
+
+      <!-- Match results table -->
+      <div class="card" style="overflow:auto">
+        <table class="rankings-table results-table" id="resultsTable">
+          <thead>
+            <tr>
+              <th>Home Team</th>
+              <th>Away Team</th>
+              <th>Predicted</th>
+              <th>Actual</th>
+              <th>Scores</th>
+              <th>Confidence</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody id="resultsBody">
+            <tr><td colspan="7" class="loading-cell">Select a date and click Load to view results.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 7-day accuracy sparkline -->
+      <div class="card">
+        <div class="card-title">7-DAY ACCURACY TREND</div>
+        <div class="accuracy-trend" id="accuracyTrend"></div>
+      </div>
+
+      <!-- LLM suggestions -->
+      <div class="card" id="suggestionsCard" style="display:none">
+        <div class="card-title">AI IMPROVEMENT SUGGESTIONS</div>
+        <ul class="suggestions-list" id="suggestionsList"></ul>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="app-footer">
+  FIFA WORLD CUP 2026 | Predictor Platform v1.0 &nbsp;|&nbsp; Powered by XGBoost + Monte Carlo Simulation
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

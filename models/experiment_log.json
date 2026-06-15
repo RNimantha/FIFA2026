@@ -1,0 +1,67 @@
+{
+  "experiments": [
+    {
+      "timestamp": "2026-06-15T16:19:22.399216",
+      "model_version": "v1_20260615",
+      "hyperparameters": {
+        "classifier": {
+          "n_estimators": 500,
+          "max_depth": 6,
+          "learning_rate": 0.05,
+          "subsample": 0.8,
+          "colsample_bytree": 0.8
+        },
+        "score_predictor": {
+          "objective": "count:poisson",
+          "n_estimators": 300,
+          "max_depth": 5,
+          "learning_rate": 0.05
+        },
+        "ensemble": {
+          "classifier_weight": 0.6,
+          "score_model_weight": 0.4
+        },
+        "cv": {
+          "n_splits": 5,
+          "method": "TimeSeriesSplit"
+        },
+        "random_seed": 42
+      },
+      "metrics": {
+        "cv_accuracy_mean": 0.5607967119822953,
+        "cv_accuracy_std": 0.013862113941137833,
+        "cv_f1_macro_mean": 0.4545785330688547,
+        "cv_logloss_mean": 0.9439228054604485,
+        "val_accuracy": 0.5936,
+        "val_f1_macro": 0.4742,
+        "val_log_loss": 0.8827,
+        "val_brier_score": 0.1729,
+        "val_baseline_accuracy": 0.4831,
+        "val_accuracy_vs_baseline": 0.1105,
+        "home_mae": 1.0427,
+        "home_rmse": 1.3671,
+        "home_naive_mae": 1.2268,
+        "away_mae": 0.8476,
+        "away_rmse": 1.1253,
+        "away_naive_mae": 0.9587,
+        "clf_accuracy": 0.5965,
+        "clf_f1_macro": 0.4699,
+        "clf_log_loss": 0.8777,
+        "clf_brier_score": 0.172,
+        "clf_baseline_accuracy": 0.4721,
+        "clf_accuracy_vs_baseline": 0.1244,
+        "ensemble_accuracy": 0.5996,
+        "ensemble_f1_macro": 0.4544,
+        "ensemble_log_loss": 0.8707,
+        "ensemble_brier_score": 0.1707,
+        "ensemble_baseline_accuracy": 0.4721,
+        "ensemble_accuracy_vs_baseline": 0.1276
+      },
+      "model_paths": {
+        "classifier": "/Users/nimantha/Nimantha-Git/FIFA_prediction/models/xgb_classifier_20260615_v1.pkl",
+        "home_goals": "/Users/nimantha/Nimantha-Git/FIFA_prediction/models/xgb_home_goals_20260615_v1.pkl",
+        "away_goals": "/Users/nimantha/Nimantha-Git/FIFA_prediction/models/xgb_away_goals_20260615_v1.pkl"
+      }
+    }
+  ]
+}

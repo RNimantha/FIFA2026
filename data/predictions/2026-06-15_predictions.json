@@ -1,0 +1,50 @@
+[
+  {
+    "home_team": "Saudi Arabia",
+    "away_team": "Uruguay",
+    "tournament": "FIFA World Cup",
+    "neutral_venue": true,
+    "predicted_result": "A",
+    "home_win_prob": 0.1046,
+    "draw_prob": 0.205,
+    "away_win_prob": 0.6904,
+    "predicted_home_goals": 0.7,
+    "predicted_away_goals": 1.86
+  },
+  {
+    "home_team": "Spain",
+    "away_team": "Cape Verde",
+    "tournament": "FIFA World Cup",
+    "neutral_venue": true,
+    "predicted_result": "H",
+    "home_win_prob": 0.846,
+    "draw_prob": 0.1204,
+    "away_win_prob": 0.0336,
+    "predicted_home_goals": 3.08,
+    "predicted_away_goals": 0.71
+  },
+  {
+    "home_team": "Iran",
+    "away_team": "New Zealand",
+    "tournament": "FIFA World Cup",
+    "neutral_venue": true,
+    "predicted_result": "H",
+    "home_win_prob": 0.6154,
+    "draw_prob": 0.2424,
+    "away_win_prob": 0.1422,
+    "predicted_home_goals": 1.95,
+    "predicted_away_goals": 0.95
+  },
+  {
+    "home_team": "Belgium",
+    "away_team": "Egypt",
+    "tournament": "FIFA World Cup",
+    "neutral_venue": true,
+    "predicted_result": "H",
+    "home_win_prob": 0.5432,
+    "draw_prob": 0.252,
+    "away_win_prob": 0.2049,
+    "predicted_home_goals": 1.39,
+    "predicted_away_goals": 0.87
+  }
+]

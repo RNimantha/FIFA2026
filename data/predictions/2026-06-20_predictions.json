@@ -1,0 +1,50 @@
+[
+  {
+    "home_team": "Canada",
+    "away_team": "Paraguay",
+    "tournament": "FIFA World Cup",
+    "neutral_venue": true,
+    "predicted_result": "H",
+    "home_win_prob": 0.3776,
+    "draw_prob": 0.2827,
+    "away_win_prob": 0.3397,
+    "predicted_home_goals": 1.1,
+    "predicted_away_goals": 1.19
+  },
+  {
+    "home_team": "France",
+    "away_team": "Algeria",
+    "tournament": "FIFA World Cup",
+    "neutral_venue": true,
+    "predicted_result": "H",
+    "home_win_prob": 0.7144,
+    "draw_prob": 0.1395,
+    "away_win_prob": 0.1461,
+    "predicted_home_goals": 2.38,
+    "predicted_away_goals": 0.77
+  },
+  {
+    "home_team": "Brazil",
+    "away_team": "Guatemala",
+    "tournament": "FIFA World Cup",
+    "neutral_venue": true,
+    "predicted_result": "H",
+    "home_win_prob": 0.8941,
+    "draw_prob": 0.0811,
+    "away_win_prob": 0.0247,
+    "predicted_home_goals": 3.62,
+    "predicted_away_goals": 0.48
+  },
+  {
+    "home_team": "England",
+    "away_team": "Argentina",
+    "tournament": "FIFA World Cup",
+    "neutral_venue": true,
+    "predicted_result": "A",
+    "home_win_prob": 0.2824,
+    "draw_prob": 0.2452,
+    "away_win_prob": 0.4724,
+    "predicted_home_goals": 1.17,
+    "predicted_away_goals": 1.46
+  }
+]

@@ -1,0 +1,162 @@
+[
+  {
+    "date": "2026-06-15",
+    "home_team": "Saudi Arabia",
+    "away_team": "Uruguay",
+    "home_score": 6,
+    "away_score": 0,
+    "result": "H",
+    "source_url": "https://www.foxsports.com/stories/soccer/how-to-watch-saudi-arabia-vs-uruguay-tv-channel-live-stream-2026-fifa-world-cup-group-h?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-15",
+    "home_team": "Spain",
+    "away_team": "Cape Verde",
+    "home_score": 5,
+    "away_score": 0,
+    "result": "H",
+    "source_url": "https://www.skysports.com/football/spain-vs-cape-verde/teams/549780?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-15",
+    "home_team": "Iran",
+    "away_team": "New Zealand",
+    "home_score": 9,
+    "away_score": 0,
+    "result": "H",
+    "source_url": "https://www.foxsports.com/stories/soccer/how-to-watch-iran-vs-new-zealand-tv-channel-live-stream-2026-fifa-world-cup-group-g?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-15",
+    "home_team": "Belgium",
+    "away_team": "Egypt",
+    "home_score": 3,
+    "away_score": 0,
+    "result": "H",
+    "source_url": "https://www.foxsports.com/stories/soccer/how-to-watch-belgium-vs-egypt-tv-channel-live-stream-2026-fifa-world-cup-group-g?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-14",
+    "home_team": "Ivory Coast",
+    "away_team": "Ecuador",
+    "home_score": 1,
+    "away_score": 0,
+    "result": "H",
+    "source_url": "https://www.washingtonpost.com/sports/soccer/2026/06/14/world-cup-ivory-coast-ecuador-score/cc00963e-6858-11f1-830e-133d20cadd28_story.html?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-14",
+    "home_team": "Germany",
+    "away_team": "Curacao",
+    "home_score": 7,
+    "away_score": 1,
+    "result": "H",
+    "source_url": "https://www.skysports.com/football/news/11095/13552702/world-cup-2026-germany-7-1-curacao-caribbean-debutants-given-a-thumping-in-group-e?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-14",
+    "home_team": "Netherlands",
+    "away_team": "Japan",
+    "home_score": 2,
+    "away_score": 2,
+    "result": "D",
+    "source_url": "https://betora.app/result/world-cup/netherlands-vs-japan-2026-06-14?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-14",
+    "home_team": "Sweden",
+    "away_team": "Tunisia",
+    "home_score": 5,
+    "away_score": 1,
+    "result": "H",
+    "source_url": "https://www.skysports.com/football/news/33694/13552698/world-cup-2026-sweden-5-1-tunisia-viktor-gyokeres-and-alexander-isak-guide-graham-potters-side-to-victory?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-13",
+    "home_team": "Haiti",
+    "away_team": "Scotland",
+    "home_score": 1,
+    "away_score": 0,
+    "result": "H",
+    "source_url": "https://www.washingtonpost.com/sports/soccer/2026/06/13/haiti-scotland-world-cup-score/0e9d5f78-679f-11f1-bdd4-805ebb99a693_story.html?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-13",
+    "home_team": "Australia",
+    "away_team": "Turkey",
+    "home_score": 2,
+    "away_score": 0,
+    "result": "H",
+    "source_url": "https://www.skysports.com/football/news/12098/13552630/world-cup-2026-australia-2-0-turkey-socceroos-make-winning-start-to-group-d-campaign-in-vancouver?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-13",
+    "home_team": "Brazil",
+    "away_team": "Morocco",
+    "home_score": 1,
+    "away_score": 1,
+    "result": "D",
+    "source_url": "https://www.skysports.com/football/brazil-vs-morocco/report/549771?utm_source=openai",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-12",
+    "home_team": "Canada",
+    "away_team": "Bosnia-Herzegovina",
+    "home_score": 1,
+    "away_score": 1,
+    "result": "D",
+    "source_url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/canada-bosnia-and-herzegovina-highlights-match-report?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-12",
+    "home_team": "USA",
+    "away_team": "Paraguay",
+    "home_score": 4,
+    "away_score": 1,
+    "result": "H",
+    "source_url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/usa-paraguay-highlights-match-report?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-11",
+    "home_team": "Mexico",
+    "away_team": "South Africa",
+    "home_score": 2,
+    "away_score": 0,
+    "result": "H",
+    "source_url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/mexico-south-africa-highlights-match-report?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-11",
+    "home_team": "South Korea",
+    "away_team": "Czech Republic",
+    "home_score": 2,
+    "away_score": 1,
+    "result": "H",
+    "source_url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/korea-republic-czechia-highlights-match-report?utm_source=openai",
+    "confidence": "medium"
+  },
+  {
+    "date": "2026-06-13",
+    "home_team": "Qatar",
+    "away_team": "Switzerland",
+    "home_score": 1,
+    "away_score": 1,
+    "result": "D",
+    "source_url": "https://www.gmanetwork.com/news/sports/football/991383/2026-fifa-world-cup-qatar-vs-switzerland-june-13-2026/story/?utm_source=openai",
+    "confidence": "medium"
+  }
+]
