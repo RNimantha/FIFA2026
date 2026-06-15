@@ -26,6 +26,31 @@ def _latest_model(prefix: str) -> Path:
     return candidates[0]
 
 
+def _start_background_scheduler():
+    """Start APScheduler in background thread inside the FastAPI process."""
+    import os
+    if not os.environ.get("OPENAI_API_KEY"):
+        logger.warning("OPENAI_API_KEY not set — live results agent will not run.")
+        return None
+
+    try:
+        from apscheduler.schedulers.background import BackgroundScheduler
+        from src.agent.scheduler import run_live_results_update, run_pipeline
+
+        sched = BackgroundScheduler(timezone="UTC")
+        # Every 2 hours: fetch newly completed match results
+        sched.add_job(run_live_results_update, "interval", hours=2,
+                      id="live_results", next_run_time=__import__('datetime').datetime.utcnow())
+        # Daily 23:00 UTC: full feedback + retrain pipeline
+        sched.add_job(run_pipeline, "cron", hour=23, minute=0, id="daily_pipeline")
+        sched.start()
+        logger.info("Background scheduler started — live results every 2h, pipeline at 23:00 UTC.")
+        return sched
+    except Exception as exc:
+        logger.warning("Scheduler failed to start: %s", exc)
+        return None
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("Loading models...")
@@ -39,8 +64,13 @@ async def lifespan(app: FastAPI):
     app.state.snapshot = TeamStateSnapshot.from_dataframe(df)
     logger.info("Snapshot ready. %d teams tracked.", len(app.state.snapshot.elo))
 
+    app.state.scheduler = _start_background_scheduler()
+
     yield
-    # Cleanup (none needed)
+
+    if app.state.scheduler:
+        app.state.scheduler.shutdown(wait=False)
+        logger.info("Scheduler stopped.")
 
 
 app = FastAPI(

@@ -11,30 +11,26 @@ const API_BASE = window.location.hostname === 'localhost' ? 'http://localhost:80
 
 // Display name → API/dataset name for teams with name differences
 const API_NAME_MAP = {
-  'Korea Republic': 'South Korea',
-  'Türkiye':        'Turkey',
-  "Côte d'Ivoire":  'Ivory Coast',
-  'Cabo Verde':     'Cape Verde',
-  'IR Iran':        'Iran',
-  'Czechia':        'Czech Republic',
-  'Congo DR':       'DR Congo',
+  'Türkiye':                'Turkey',
+  'Czechia':                'Czech Republic',
   'Bosnia and Herzegovina': 'Bosnia-Herzegovina',
-  'Curaçao':        'Curacao',
+  'Curaçao':                'Curacao',
+  'Cabo Verde':             'Cape Verde',
 };
 function apiName(team) { return API_NAME_MAP[team] || team; }
 
 const WC2026_GROUPS = {
-  A: ['Mexico', 'Korea Republic', 'Czechia', 'South Africa'],
+  A: ['Mexico', 'South Korea', 'Czechia', 'South Africa'],
   B: ['Canada', 'Bosnia and Herzegovina', 'Qatar', 'Switzerland'],
   C: ['Haiti', 'Scotland', 'Brazil', 'Morocco'],
   D: ['USA', 'Paraguay', 'Australia', 'Türkiye'],
-  E: ["Côte d'Ivoire", 'Ecuador', 'Germany', 'Curaçao'],
+  E: ['Ivory Coast', 'Ecuador', 'Germany', 'Curaçao'],
   F: ['Netherlands', 'Japan', 'Sweden', 'Tunisia'],
-  G: ['IR Iran', 'New Zealand', 'Belgium', 'Egypt'],
+  G: ['Iran', 'New Zealand', 'Belgium', 'Egypt'],
   H: ['Saudi Arabia', 'Uruguay', 'Spain', 'Cabo Verde'],
   I: ['France', 'Senegal', 'Iraq', 'Norway'],
   J: ['Argentina', 'Algeria', 'Austria', 'Jordan'],
-  K: ['Portugal', 'Congo DR', 'Uzbekistan', 'Colombia'],
+  K: ['Portugal', 'DR Congo', 'Uzbekistan', 'Colombia'],
   L: ['Ghana', 'Panama', 'England', 'Croatia'],
 };
 
@@ -60,13 +56,13 @@ const TEAM_FLAGS = {
   // Africa
   'Morocco': '🇲🇦', 'Senegal': '🇸🇳', 'Egypt': '🇪🇬',
   'Algeria': '🇩🇿', 'South Africa': '🇿🇦', 'Ghana': '🇬🇭',
-  "Côte d'Ivoire": '🇨🇮', 'Cameroon': '🇨🇲', 'Nigeria': '🇳🇬',
+  'Ivory Coast': '🇨🇮', 'Cameroon': '🇨🇲', 'Nigeria': '🇳🇬',
   'Mali': '🇲🇱', 'Tunisia': '🇹🇳', 'Cabo Verde': '🇨🇻',
-  'Congo DR': '🇨🇩',
+  'DR Congo': '🇨🇩',
   // Asia / Middle East
-  'Japan': '🇯🇵', 'Korea Republic': '🇰🇷', 'Australia': '🇦🇺',
+  'Japan': '🇯🇵', 'South Korea': '🇰🇷', 'Australia': '🇦🇺',
   'Saudi Arabia': '🇸🇦', 'Iraq': '🇮🇶', 'Jordan': '🇯🇴',
-  'IR Iran': '🇮🇷', 'New Zealand': '🇳🇿', 'Qatar': '🇶🇦',
+  'Iran': '🇮🇷', 'New Zealand': '🇳🇿', 'Qatar': '🇶🇦',
   // Caribbean / other
   'Curaçao': '🇨🇼',
 };
@@ -74,80 +70,80 @@ const TEAM_FLAGS = {
 // Official group stage match list — all 72 matches
 const MATCH_LIST = [
   // ── MATCHDAY 1 ──────────────────────────────────────────────
-  { id:1,  date:'2026-06-11', group:'A', md:1, home:'Mexico',           away:'South Africa',           venue:'Mexico City Stadium' },
-  { id:2,  date:'2026-06-11', group:'A', md:1, home:'Korea Republic',   away:'Czechia',                venue:'Estadio Guadalajara' },
-  { id:3,  date:'2026-06-12', group:'B', md:1, home:'Canada',           away:'Bosnia and Herzegovina', venue:'Toronto Stadium' },
-  { id:4,  date:'2026-06-12', group:'D', md:1, home:'USA',              away:'Paraguay',               venue:'Los Angeles Stadium' },
-  { id:5,  date:'2026-06-13', group:'C', md:1, home:'Haiti',            away:'Scotland',               venue:'Boston Stadium' },
-  { id:6,  date:'2026-06-13', group:'D', md:1, home:'Australia',        away:'Türkiye',                venue:'BC Place, Vancouver' },
-  { id:7,  date:'2026-06-13', group:'C', md:1, home:'Brazil',           away:'Morocco',                venue:'New York New Jersey Stadium' },
-  { id:8,  date:'2026-06-13', group:'B', md:1, home:'Qatar',            away:'Switzerland',            venue:'San Francisco Bay Area Stadium' },
-  { id:9,  date:'2026-06-14', group:'E', md:1, home:"Côte d'Ivoire",   away:'Ecuador',                venue:'Philadelphia Stadium' },
-  { id:10, date:'2026-06-14', group:'E', md:1, home:'Germany',          away:'Curaçao',                venue:'Houston Stadium' },
-  { id:11, date:'2026-06-14', group:'F', md:1, home:'Netherlands',      away:'Japan',                  venue:'Dallas Stadium' },
-  { id:12, date:'2026-06-14', group:'F', md:1, home:'Sweden',           away:'Tunisia',                venue:'Estadio Monterrey' },
-  { id:13, date:'2026-06-15', group:'H', md:1, home:'Saudi Arabia',     away:'Uruguay',                venue:'Miami Stadium' },
-  { id:14, date:'2026-06-15', group:'H', md:1, home:'Spain',            away:'Cabo Verde',             venue:'Atlanta Stadium' },
-  { id:15, date:'2026-06-15', group:'G', md:1, home:'IR Iran',          away:'New Zealand',            venue:'Los Angeles Stadium' },
-  { id:16, date:'2026-06-15', group:'G', md:1, home:'Belgium',          away:'Egypt',                  venue:'Seattle Stadium' },
-  { id:17, date:'2026-06-16', group:'I', md:1, home:'France',           away:'Senegal',                venue:'New York New Jersey Stadium' },
-  { id:18, date:'2026-06-16', group:'I', md:1, home:'Iraq',             away:'Norway',                 venue:'Boston Stadium' },
-  { id:19, date:'2026-06-16', group:'J', md:1, home:'Argentina',        away:'Algeria',                venue:'Kansas City Stadium' },
-  { id:20, date:'2026-06-16', group:'J', md:1, home:'Austria',          away:'Jordan',                 venue:'San Francisco Bay Area Stadium' },
-  { id:21, date:'2026-06-17', group:'L', md:1, home:'Ghana',            away:'Panama',                 venue:'Toronto Stadium' },
-  { id:22, date:'2026-06-17', group:'L', md:1, home:'England',          away:'Croatia',                venue:'Dallas Stadium' },
-  { id:23, date:'2026-06-17', group:'K', md:1, home:'Portugal',         away:'Congo DR',               venue:'Houston Stadium' },
-  { id:24, date:'2026-06-17', group:'K', md:1, home:'Uzbekistan',       away:'Colombia',               venue:'Mexico City Stadium' },
+  { id:1,  date:'2026-06-12', group:'A', md:1, home:'Mexico',                  away:'South Africa',           venue:'SoFi Stadium, Los Angeles' },
+  { id:2,  date:'2026-06-12', group:'A', md:1, home:'South Korea',             away:'Czechia',                venue:'Estadio Akron, Guadalajara' },
+  { id:3,  date:'2026-06-13', group:'B', md:1, home:'Canada',                  away:'Bosnia and Herzegovina', venue:'BC Place, Vancouver' },
+  { id:4,  date:'2026-06-13', group:'D', md:1, home:'USA',                     away:'Paraguay',               venue:'MetLife Stadium, New York' },
+  { id:5,  date:'2026-06-14', group:'B', md:1, home:'Qatar',                   away:'Switzerland',            venue:'Levis Stadium, San Francisco' },
+  { id:6,  date:'2026-06-14', group:'C', md:1, home:'Brazil',                  away:'Morocco',                venue:'Rose Bowl, Los Angeles' },
+  { id:7,  date:'2026-06-14', group:'C', md:1, home:'Haiti',                   away:'Scotland',               venue:'Gillette Stadium, Boston' },
+  { id:8,  date:'2026-06-14', group:'D', md:1, home:'Australia',               away:'Türkiye',                venue:'BC Place, Vancouver' },
+  { id:9,  date:'2026-06-14', group:'E', md:1, home:'Germany',                 away:'Curaçao',                venue:'NRG Stadium, Houston' },
+  { id:10, date:'2026-06-15', group:'E', md:1, home:'Ivory Coast',             away:'Ecuador',                venue:'Lincoln Financial Field, Philadelphia' },
+  { id:11, date:'2026-06-15', group:'F', md:1, home:'Netherlands',             away:'Japan',                  venue:'AT&T Stadium, Dallas' },
+  { id:12, date:'2026-06-15', group:'F', md:1, home:'Sweden',                  away:'Tunisia',                venue:'Estadio BBVA, Monterrey' },
+  { id:13, date:'2026-06-15', group:'H', md:1, home:'Spain',                   away:'Cabo Verde',             venue:'Mercedes-Benz Stadium, Atlanta' },
+  { id:14, date:'2026-06-16', group:'G', md:1, home:'Belgium',                 away:'Egypt',                  venue:'Lumen Field, Seattle' },
+  { id:15, date:'2026-06-16', group:'H', md:1, home:'Saudi Arabia',            away:'Uruguay',                venue:'Hard Rock Stadium, Miami' },
+  { id:16, date:'2026-06-16', group:'G', md:1, home:'Iran',                    away:'New Zealand',            venue:'SoFi Stadium, Los Angeles' },
+  { id:17, date:'2026-06-17', group:'I', md:1, home:'France',                  away:'Senegal',                venue:'MetLife Stadium, New York' },
+  { id:18, date:'2026-06-17', group:'I', md:1, home:'Iraq',                    away:'Norway',                 venue:'Gillette Stadium, Boston' },
+  { id:19, date:'2026-06-17', group:'J', md:1, home:'Argentina',               away:'Algeria',                venue:'Arrowhead Stadium, Kansas City' },
+  { id:20, date:'2026-06-17', group:'J', md:1, home:'Austria',                 away:'Jordan',                 venue:'Levis Stadium, San Francisco' },
+  { id:21, date:'2026-06-17', group:'K', md:1, home:'Portugal',                away:'DR Congo',               venue:'NRG Stadium, Houston' },
+  { id:22, date:'2026-06-18', group:'L', md:1, home:'England',                 away:'Croatia',                venue:'AT&T Stadium, Dallas' },
+  { id:23, date:'2026-06-18', group:'L', md:1, home:'Ghana',                   away:'Panama',                 venue:'BC Place, Vancouver' },
+  { id:24, date:'2026-06-18', group:'K', md:1, home:'Uzbekistan',              away:'Colombia',               venue:'Estadio Azteca, Mexico City' },
   // ── MATCHDAY 2 ──────────────────────────────────────────────
-  { id:25, date:'2026-06-18', group:'A', md:2, home:'Czechia',          away:'South Africa',           venue:'Atlanta Stadium' },
-  { id:26, date:'2026-06-18', group:'B', md:2, home:'Switzerland',      away:'Bosnia and Herzegovina', venue:'Los Angeles Stadium' },
-  { id:27, date:'2026-06-18', group:'B', md:2, home:'Canada',           away:'Qatar',                  venue:'BC Place, Vancouver' },
-  { id:28, date:'2026-06-18', group:'A', md:2, home:'Mexico',           away:'Korea Republic',         venue:'Estadio Guadalajara' },
-  { id:29, date:'2026-06-19', group:'C', md:2, home:'Brazil',           away:'Haiti',                  venue:'Philadelphia Stadium' },
-  { id:30, date:'2026-06-19', group:'C', md:2, home:'Scotland',         away:'Morocco',                venue:'Boston Stadium' },
-  { id:31, date:'2026-06-19', group:'D', md:2, home:'Türkiye',          away:'Paraguay',               venue:'San Francisco Bay Area Stadium' },
-  { id:32, date:'2026-06-19', group:'D', md:2, home:'USA',              away:'Australia',              venue:'Seattle Stadium' },
-  { id:33, date:'2026-06-20', group:'E', md:2, home:'Germany',          away:"Côte d'Ivoire",         venue:'Toronto Stadium' },
-  { id:34, date:'2026-06-20', group:'E', md:2, home:'Ecuador',          away:'Curaçao',                venue:'Kansas City Stadium' },
-  { id:35, date:'2026-06-20', group:'F', md:2, home:'Netherlands',      away:'Sweden',                 venue:'Houston Stadium' },
-  { id:36, date:'2026-06-20', group:'F', md:2, home:'Tunisia',          away:'Japan',                  venue:'Estadio Monterrey' },
-  { id:37, date:'2026-06-21', group:'H', md:2, home:'Uruguay',          away:'Cabo Verde',             venue:'Miami Stadium' },
-  { id:38, date:'2026-06-21', group:'H', md:2, home:'Spain',            away:'Saudi Arabia',           venue:'Atlanta Stadium' },
-  { id:39, date:'2026-06-21', group:'G', md:2, home:'Belgium',          away:'IR Iran',                venue:'Los Angeles Stadium' },
-  { id:40, date:'2026-06-21', group:'G', md:2, home:'New Zealand',      away:'Egypt',                  venue:'BC Place, Vancouver' },
-  { id:41, date:'2026-06-22', group:'I', md:2, home:'Norway',           away:'Senegal',                venue:'New York New Jersey Stadium' },
-  { id:42, date:'2026-06-22', group:'I', md:2, home:'France',           away:'Iraq',                   venue:'Philadelphia Stadium' },
-  { id:43, date:'2026-06-22', group:'J', md:2, home:'Argentina',        away:'Austria',                venue:'Dallas Stadium' },
-  { id:44, date:'2026-06-22', group:'J', md:2, home:'Jordan',           away:'Algeria',                venue:'San Francisco Bay Area Stadium' },
-  { id:45, date:'2026-06-23', group:'L', md:2, home:'England',          away:'Ghana',                  venue:'Boston Stadium' },
-  { id:46, date:'2026-06-23', group:'L', md:2, home:'Panama',           away:'Croatia',                venue:'Toronto Stadium' },
-  { id:47, date:'2026-06-23', group:'K', md:2, home:'Portugal',         away:'Uzbekistan',             venue:'Houston Stadium' },
-  { id:48, date:'2026-06-23', group:'K', md:2, home:'Colombia',         away:'Congo DR',               venue:'Estadio Guadalajara' },
+  { id:25, date:'2026-06-18', group:'A', md:2, home:'Czechia',                 away:'South Africa',           venue:'Mercedes-Benz Stadium, Atlanta' },
+  { id:26, date:'2026-06-19', group:'B', md:2, home:'Switzerland',             away:'Bosnia and Herzegovina', venue:'SoFi Stadium, Los Angeles' },
+  { id:27, date:'2026-06-19', group:'B', md:2, home:'Canada',                  away:'Qatar',                  venue:'BC Place, Vancouver' },
+  { id:28, date:'2026-06-19', group:'A', md:2, home:'Mexico',                  away:'South Korea',            venue:'Estadio Akron, Guadalajara' },
+  { id:29, date:'2026-06-20', group:'D', md:2, home:'USA',                     away:'Australia',              venue:'Lumen Field, Seattle' },
+  { id:30, date:'2026-06-20', group:'C', md:2, home:'Scotland',                away:'Morocco',                venue:'Gillette Stadium, Boston' },
+  { id:31, date:'2026-06-20', group:'C', md:2, home:'Brazil',                  away:'Haiti',                  venue:'Lincoln Financial Field, Philadelphia' },
+  { id:32, date:'2026-06-20', group:'D', md:2, home:'Türkiye',                 away:'Paraguay',               venue:'Levis Stadium, San Francisco' },
+  { id:33, date:'2026-06-20', group:'F', md:2, home:'Netherlands',             away:'Sweden',                 venue:'Estadio BBVA, Monterrey' },
+  { id:34, date:'2026-06-21', group:'E', md:2, home:'Germany',                 away:'Ivory Coast',            venue:'BC Place, Vancouver' },
+  { id:35, date:'2026-06-21', group:'E', md:2, home:'Ecuador',                 away:'Curaçao',                venue:'Arrowhead Stadium, Kansas City' },
+  { id:36, date:'2026-06-21', group:'F', md:2, home:'Tunisia',                 away:'Japan',                  venue:'Estadio BBVA, Monterrey' },
+  { id:37, date:'2026-06-21', group:'H', md:2, home:'Spain',                   away:'Saudi Arabia',           venue:'MetLife Stadium, New York' },
+  { id:38, date:'2026-06-22', group:'G', md:2, home:'Belgium',                 away:'Iran',                   venue:'Hard Rock Stadium, Miami' },
+  { id:39, date:'2026-06-22', group:'H', md:2, home:'Uruguay',                 away:'Cabo Verde',             venue:'Mercedes-Benz Stadium, Atlanta' },
+  { id:40, date:'2026-06-22', group:'G', md:2, home:'New Zealand',             away:'Egypt',                  venue:'SoFi Stadium, Los Angeles' },
+  { id:41, date:'2026-06-22', group:'J', md:2, home:'Argentina',               away:'Austria',                venue:'AT&T Stadium, Dallas' },
+  { id:42, date:'2026-06-23', group:'I', md:2, home:'France',                  away:'Iraq',                   venue:'Rose Bowl, Los Angeles' },
+  { id:43, date:'2026-06-23', group:'I', md:2, home:'Norway',                  away:'Senegal',                venue:'Lumen Field, Seattle' },
+  { id:44, date:'2026-06-23', group:'J', md:2, home:'Jordan',                  away:'Algeria',                venue:'NRG Stadium, Houston' },
+  { id:45, date:'2026-06-23', group:'K', md:2, home:'Portugal',                away:'Uzbekistan',             venue:'Gillette Stadium, Boston' },
+  { id:46, date:'2026-06-24', group:'L', md:2, home:'England',                 away:'Ghana',                  venue:'MetLife Stadium, New York' },
+  { id:47, date:'2026-06-24', group:'L', md:2, home:'Panama',                  away:'Croatia',                venue:'Arrowhead Stadium, Kansas City' },
+  { id:48, date:'2026-06-24', group:'K', md:2, home:'Colombia',                away:'DR Congo',               venue:'BC Place, Vancouver' },
   // ── MATCHDAY 3 ──────────────────────────────────────────────
-  { id:49, date:'2026-06-24', group:'C', md:3, home:'Scotland',         away:'Brazil',                 venue:'Miami Stadium' },
-  { id:50, date:'2026-06-24', group:'C', md:3, home:'Morocco',          away:'Haiti',                  venue:'Atlanta Stadium' },
-  { id:51, date:'2026-06-24', group:'B', md:3, home:'Switzerland',      away:'Canada',                 venue:'BC Place, Vancouver' },
-  { id:52, date:'2026-06-24', group:'B', md:3, home:'Bosnia and Herzegovina', away:'Qatar',            venue:'Seattle Stadium' },
-  { id:53, date:'2026-06-24', group:'A', md:3, home:'Czechia',          away:'Mexico',                 venue:'Mexico City Stadium' },
-  { id:54, date:'2026-06-24', group:'A', md:3, home:'South Africa',     away:'Korea Republic',         venue:'Estadio Monterrey' },
-  { id:55, date:'2026-06-25', group:'E', md:3, home:'Curaçao',          away:"Côte d'Ivoire",         venue:'Philadelphia Stadium' },
-  { id:56, date:'2026-06-25', group:'E', md:3, home:'Ecuador',          away:'Germany',                venue:'New York New Jersey Stadium' },
-  { id:57, date:'2026-06-25', group:'F', md:3, home:'Japan',            away:'Sweden',                 venue:'Dallas Stadium' },
-  { id:58, date:'2026-06-25', group:'F', md:3, home:'Tunisia',          away:'Netherlands',            venue:'Kansas City Stadium' },
-  { id:59, date:'2026-06-25', group:'D', md:3, home:'Türkiye',          away:'USA',                    venue:'Los Angeles Stadium' },
-  { id:60, date:'2026-06-25', group:'D', md:3, home:'Paraguay',         away:'Australia',              venue:'San Francisco Bay Area Stadium' },
-  { id:61, date:'2026-06-26', group:'I', md:3, home:'Norway',           away:'France',                 venue:'Boston Stadium' },
-  { id:62, date:'2026-06-26', group:'I', md:3, home:'Senegal',          away:'Iraq',                   venue:'Toronto Stadium' },
-  { id:63, date:'2026-06-26', group:'H', md:3, home:'Cabo Verde',       away:'Saudi Arabia',           venue:'Houston Stadium' },
-  { id:64, date:'2026-06-26', group:'H', md:3, home:'Uruguay',          away:'Spain',                  venue:'Zapopan Stadium' },
-  { id:65, date:'2026-06-26', group:'G', md:3, home:'New Zealand',      away:'Belgium',                venue:'Vancouver Stadium' },
-  { id:66, date:'2026-06-26', group:'G', md:3, home:'Egypt',            away:'IR Iran',                venue:'Seattle Stadium' },
-  { id:67, date:'2026-06-27', group:'L', md:3, home:'Panama',           away:'England',                venue:'New Jersey Stadium' },
-  { id:68, date:'2026-06-27', group:'L', md:3, home:'Croatia',          away:'Ghana',                  venue:'Philadelphia Stadium' },
-  { id:69, date:'2026-06-27', group:'K', md:3, home:'Colombia',         away:'Portugal',               venue:'Miami Stadium' },
-  { id:70, date:'2026-06-27', group:'K', md:3, home:'Congo DR',         away:'Uzbekistan',             venue:'Atlanta Stadium' },
-  { id:71, date:'2026-06-27', group:'J', md:3, home:'Algeria',          away:'Austria',                venue:'San Francisco Bay Area Stadium' },
-  { id:72, date:'2026-06-27', group:'J', md:3, home:'Jordan',           away:'Argentina',              venue:'Kansas City Stadium' },
+  { id:49, date:'2026-06-25', group:'B', md:3, home:'Switzerland',             away:'Canada',                 venue:'Levis Stadium, San Francisco' },
+  { id:50, date:'2026-06-25', group:'B', md:3, home:'Bosnia and Herzegovina',  away:'Qatar',                  venue:'SoFi Stadium, Los Angeles' },
+  { id:51, date:'2026-06-25', group:'C', md:3, home:'Morocco',                 away:'Haiti',                  venue:'AT&T Stadium, Dallas' },
+  { id:52, date:'2026-06-25', group:'C', md:3, home:'Scotland',                away:'Brazil',                 venue:'MetLife Stadium, New York' },
+  { id:53, date:'2026-06-25', group:'A', md:3, home:'South Africa',            away:'South Korea',            venue:'NRG Stadium, Houston' },
+  { id:54, date:'2026-06-25', group:'A', md:3, home:'Czechia',                 away:'Mexico',                 venue:'Estadio Azteca, Mexico City' },
+  { id:55, date:'2026-06-26', group:'E', md:3, home:'Curaçao',                 away:'Ivory Coast',            venue:'Lincoln Financial Field, Philadelphia' },
+  { id:56, date:'2026-06-26', group:'E', md:3, home:'Ecuador',                 away:'Germany',                venue:'Mercedes-Benz Stadium, Atlanta' },
+  { id:57, date:'2026-06-26', group:'F', md:3, home:'Tunisia',                 away:'Netherlands',            venue:'Hard Rock Stadium, Miami' },
+  { id:58, date:'2026-06-26', group:'F', md:3, home:'Japan',                   away:'Sweden',                 venue:'Arrowhead Stadium, Kansas City' },
+  { id:59, date:'2026-06-26', group:'D', md:3, home:'Türkiye',                 away:'USA',                    venue:'Rose Bowl, Los Angeles' },
+  { id:60, date:'2026-06-26', group:'D', md:3, home:'Paraguay',                away:'Australia',              venue:'Lumen Field, Seattle' },
+  { id:61, date:'2026-06-27', group:'I', md:3, home:'Norway',                  away:'France',                 venue:'BC Place, Vancouver' },
+  { id:62, date:'2026-06-27', group:'I', md:3, home:'Senegal',                 away:'Iraq',                   venue:'Gillette Stadium, Boston' },
+  { id:63, date:'2026-06-27', group:'H', md:3, home:'Cabo Verde',              away:'Saudi Arabia',           venue:'NRG Stadium, Houston' },
+  { id:64, date:'2026-06-27', group:'H', md:3, home:'Uruguay',                 away:'Spain',                  venue:'SoFi Stadium, Los Angeles' },
+  { id:65, date:'2026-06-27', group:'G', md:3, home:'New Zealand',             away:'Belgium',                venue:'AT&T Stadium, Dallas' },
+  { id:66, date:'2026-06-27', group:'G', md:3, home:'Egypt',                   away:'Iran',                   venue:'MetLife Stadium, New York' },
+  { id:67, date:'2026-06-28', group:'L', md:3, home:'Panama',                  away:'England',                venue:'Mercedes-Benz Stadium, Atlanta' },
+  { id:68, date:'2026-06-28', group:'L', md:3, home:'Croatia',                 away:'Ghana',                  venue:'Levis Stadium, San Francisco' },
+  { id:69, date:'2026-06-28', group:'K', md:3, home:'Colombia',                away:'Portugal',               venue:'Hard Rock Stadium, Miami' },
+  { id:70, date:'2026-06-28', group:'K', md:3, home:'DR Congo',                away:'Uzbekistan',             venue:'BC Place, Vancouver' },
+  { id:71, date:'2026-06-28', group:'J', md:3, home:'Algeria',                 away:'Austria',                venue:'Arrowhead Stadium, Kansas City' },
+  { id:72, date:'2026-06-28', group:'J', md:3, home:'Jordan',                  away:'Argentina',              venue:'Estadio Akron, Guadalajara' },
 ];
 
 const MATCH_TIMES = ['12:00 ET', '15:00 ET', '18:00 ET', '21:00 ET'];
@@ -303,7 +299,49 @@ function matchCardSkeleton(match) {
 </div>`;
 }
 
-function matchCardFull(match, pred, homeStats, awayStats) {
+function actualResultSection(actual, pred, home, away) {
+  if (!actual) {
+    return `<div class="actual-result-section upcoming">
+      <div class="actual-header">
+        <span class="actual-title">ACTUAL RESULT</span>
+        <span class="actual-badge upcoming-badge">UPCOMING</span>
+      </div>
+      <div class="actual-pending">
+        <span class="pending-dot"></span> Match not yet played
+      </div>
+    </div>`;
+  }
+
+  const hs = actual.home_score;
+  const as_ = actual.away_score;
+  const res = actual.result; // H / D / A
+  const resColor = res === 'H' ? 'var(--green)' : res === 'A' ? 'var(--red)' : 'var(--gold)';
+  const resText = res === 'H' ? `${home} Win` : res === 'A' ? `${away} Win` : 'Draw';
+
+  const predResult = pred.home_win_probability > pred.away_win_probability ? 'H'
+    : pred.away_win_probability > pred.home_win_probability ? 'A' : 'D';
+  const correct = predResult === res;
+
+  return `<div class="actual-result-section completed">
+    <div class="actual-header">
+      <span class="actual-title">ACTUAL RESULT</span>
+      <span class="actual-badge completed-badge">COMPLETED</span>
+    </div>
+    <div class="actual-score-row">
+      <span class="actual-team-name">${flag(home)} ${home}</span>
+      <span class="actual-score-display" style="color:${resColor}">${hs} – ${as_}</span>
+      <span class="actual-team-name">${flag(away)} ${away}</span>
+    </div>
+    <div class="actual-verdict">
+      <span class="actual-result-text" style="color:${resColor}">${resText}</span>
+      <span class="pred-verdict ${correct ? 'pred-correct' : 'pred-wrong'}">
+        ${correct ? '✓ Predicted correctly' : '✗ Prediction missed'}
+      </span>
+    </div>
+  </div>`;
+}
+
+function matchCardFull(match, pred, homeStats, awayStats, actual = null) {
   const { matchId, group, home, away, time, venue } = match;
   const hw = pred.home_win_probability;
   const dw = pred.draw_probability;
@@ -431,6 +469,8 @@ function matchCardFull(match, pred, homeStats, awayStats) {
     </div>
     <div class="key-insight">Key Insight: ${insight(pred, home, away)}</div>
   </div>
+
+  ${actualResultSection(actual, pred, home, away)}
 </div>`;
 }
 
@@ -455,6 +495,16 @@ async function renderDashboard(date) {
   grid.innerHTML = matches.map(m => matchCardSkeleton(m)).join('');
   updateSidebarStats(matches.length, new Set(matches.map(m => m.group)), '...');
 
+  // Fetch completed results once for this date
+  const completedData = await fetchCompletedResults(null);
+  const completedMap = {};
+  if (completedData?.matches) {
+    completedData.matches.forEach(r => {
+      // Use display names so keys match MATCH_LIST entries (e.g., "Curaçao" not "Curacao")
+      completedMap[`${displayName(r.home_team)}|${displayName(r.away_team)}`] = r;
+    });
+  }
+
   // Fetch predictions + team stats in parallel
   await Promise.all(matches.map(async (match) => {
     const [pred, homeStats, awayStats] = await Promise.all([
@@ -468,7 +518,8 @@ async function renderDashboard(date) {
       cardEl.querySelector(`#loading-${match.matchId}`).textContent = '⚠ AI offline — start the API server.';
       return;
     }
-    cardEl.outerHTML = matchCardFull(match, pred, homeStats, awayStats);
+    const actual = completedMap[`${match.home}|${match.away}`] || null;
+    cardEl.outerHTML = matchCardFull(match, pred, homeStats, awayStats, actual);
 
     // Update top pick
     const allPreds = Object.values(predictionCache);
@@ -799,6 +850,7 @@ function switchTab(tabId) {
   if (tabId === 'schedule') renderSchedule();
   if (tabId === 'rankings') renderRankings();
   if (tabId === 'results') initResultsTracker();
+  if (tabId === 'simulation') initSimulation();
 }
 
 // ============================================================
@@ -985,6 +1037,104 @@ async function init() {
   renderCalendar();
   renderDashboard(selectedDate);
   initLiveResults();
+}
+
+// ============================================================
+// SIMULATION TAB
+// ============================================================
+let simData = null;
+let simStage = 'champion';
+let simInited = false;
+
+async function fetchSimulation() {
+  try {
+    const r = await fetch(`${API_BASE}/simulate/wc2026/precomputed`, { signal: AbortSignal.timeout(8000) });
+    if (!r.ok) return null;
+    const d = await r.json();
+    return d.results;
+  } catch { return null; }
+}
+
+function pct(val) {
+  return val == null ? '—' : (val * 100).toFixed(1) + '%';
+}
+
+function probBar(val, max) {
+  const w = max > 0 ? Math.round((val / max) * 100) : 0;
+  const color = val > 0.10 ? 'var(--gold)' : val > 0.05 ? 'var(--blue-bright)' : val > 0.02 ? 'var(--green)' : 'var(--text-dim)';
+  return `<div class="sim-bar-wrap"><div class="sim-bar" style="width:${w}%;background:${color}"></div><span class="sim-bar-label">${pct(val)}</span></div>`;
+}
+
+function renderSimPodium(results) {
+  const top3 = Object.entries(results).slice(0, 3);
+  const medals = ['🥇', '🥈', '🥉'];
+  const podiumOrder = [1, 0, 2]; // silver, gold, bronze visual order
+  document.getElementById('simPodium').innerHTML = `
+    <div class="podium-row">
+      ${podiumOrder.map(i => {
+        if (!top3[i]) return '';
+        const [team, probs] = top3[i];
+        const isGold = i === 0;
+        return `<div class="podium-card ${isGold ? 'podium-gold' : ''}">
+          <div class="podium-medal">${medals[i]}</div>
+          <div class="podium-flag">${flag(team)}</div>
+          <div class="podium-team">${team}</div>
+          <div class="podium-pct">${pct(probs.champion)}</div>
+          <div class="podium-label">Champion</div>
+          <div class="podium-stats">
+            <span>Final ${pct(probs.final)}</span>
+            <span>SF ${pct(probs.sf)}</span>
+          </div>
+        </div>`;
+      }).join('')}
+    </div>`;
+}
+
+function renderSimTable(results, stage) {
+  const sorted = Object.entries(results).sort((a, b) => (b[1][stage] || 0) - (a[1][stage] || 0));
+  const maxChampion = sorted[0]?.[1]?.champion || 0;
+
+  document.getElementById('simBody').innerHTML = sorted.map(([team, probs], i) => {
+    const val = probs[stage] || 0;
+    const highlight = val > 0 ? '' : 'style="opacity:0.4"';
+    return `<tr ${highlight}>
+      <td style="color:var(--text-dim)">${i + 1}</td>
+      <td><strong>${flag(team)} ${team}</strong></td>
+      <td style="color:var(--gold);font-weight:700">${pct(probs.champion)}</td>
+      <td>${pct(probs.final)}</td>
+      <td>${pct(probs.sf)}</td>
+      <td>${pct(probs.qf)}</td>
+      <td>${pct(probs.r16)}</td>
+      <td style="color:var(--red)">${pct(probs.group_exit)}</td>
+      <td>${probBar(probs.champion, maxChampion)}</td>
+    </tr>`;
+  }).join('');
+}
+
+function initSimStageFilters() {
+  const wrap = document.getElementById('simStageFilters');
+  wrap.querySelectorAll('.grp-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      simStage = btn.dataset.stage;
+      wrap.querySelectorAll('.grp-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      if (simData) renderSimTable(simData, simStage);
+    });
+  });
+}
+
+async function initSimulation() {
+  if (simInited && simData) return;
+  simInited = true;
+  initSimStageFilters();
+  simData = await fetchSimulation();
+  if (!simData) {
+    document.getElementById('simPodium').innerHTML = '<p style="color:var(--text-muted);padding:20px">Could not load simulation results. Make sure the API is running.</p>';
+    document.getElementById('simBody').innerHTML = '<tr><td colspan="9" class="loading-cell">No data available.</td></tr>';
+    return;
+  }
+  renderSimPodium(simData);
+  renderSimTable(simData, simStage);
 }
 
 document.addEventListener('DOMContentLoaded', init);

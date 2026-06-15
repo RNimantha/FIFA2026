@@ -28,6 +28,7 @@
       <a class="nav-link" data-tab="predictor">◎ Predictor</a>
       <a class="nav-link" data-tab="rankings">⚑ Rankings</a>
       <a class="nav-link" data-tab="results">✓ Results</a>
+      <a class="nav-link" data-tab="simulation">◈ Simulation</a>
     </nav>
   </div>
 </header>
@@ -247,6 +248,51 @@
       <div class="card" id="suggestionsCard" style="display:none">
         <div class="card-title">AI IMPROVEMENT SUGGESTIONS</div>
         <ul class="suggestions-list" id="suggestionsList"></ul>
+      </div>
+    </div>
+
+    <!-- SIMULATION TAB -->
+    <div id="tab-simulation" class="tab-pane">
+      <div class="content-header">
+        <h2 class="matches-title">WC2026 TOURNAMENT SIMULATION</h2>
+        <span style="font-size:11px;color:var(--text-muted);margin-left:12px">10,000 Monte Carlo simulations</span>
+      </div>
+
+      <!-- Podium top 3 -->
+      <div class="sim-podium" id="simPodium">
+        <div class="loading-state"><div class="spinner"></div></div>
+      </div>
+
+      <!-- Stage filter buttons -->
+      <div class="sim-stage-filters" id="simStageFilters">
+        <button class="grp-btn active" data-stage="champion">🏆 Champion</button>
+        <button class="grp-btn" data-stage="final">Final</button>
+        <button class="grp-btn" data-stage="sf">Semi-Final</button>
+        <button class="grp-btn" data-stage="qf">Quarter-Final</button>
+        <button class="grp-btn" data-stage="r16">Round of 16</button>
+        <button class="grp-btn" data-stage="group_exit">Group Exit</button>
+      </div>
+
+      <!-- Full rankings table -->
+      <div class="card" style="overflow:auto;margin-top:12px">
+        <table class="rankings-table sim-table" id="simTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Team</th>
+              <th>Champion</th>
+              <th>Final</th>
+              <th>Semi-Final</th>
+              <th>Quarter-Final</th>
+              <th>Round of 16</th>
+              <th>Group Exit</th>
+              <th style="width:140px">Champion Probability</th>
+            </tr>
+          </thead>
+          <tbody id="simBody">
+            <tr><td colspan="9" class="loading-cell">Loading simulation results...</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 

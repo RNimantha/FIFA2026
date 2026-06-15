@@ -15,7 +15,7 @@ from src.simulation.wc2026 import WC2026_GROUPS
 router = APIRouter(prefix="/simulate", tags=["simulation"])
 logger = logging.getLogger(__name__)
 
-PREDICTIONS_DIR = Path(__file__).parents[4] / "data" / "predictions"
+PREDICTIONS_DIR = Path(__file__).parents[3] / "data" / "predictions"
 PRECOMPUTED_PATH = PREDICTIONS_DIR / "wc2026_simulation_results.json"
 
 

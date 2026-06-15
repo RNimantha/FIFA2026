@@ -73,6 +73,8 @@ def _parse_scores_from_text(text: str, home: str, away: str) -> tuple[int, int] 
 
 def _fetch_single_result(client: OpenAI, query: MatchQuery, log_fh) -> ActualResult | None:
     """Fetch result for one match via OpenAI web search. Returns None if not found."""
+    import re
+
     date_parts = query.date.split("-")
     month_names = ["", "January", "February", "March", "April", "May", "June",
                    "July", "August", "September", "October", "November", "December"]
@@ -80,9 +82,19 @@ def _fetch_single_result(client: OpenAI, query: MatchQuery, log_fh) -> ActualRes
     day_str = date_parts[2].lstrip("0") if len(date_parts) >= 3 else date_parts[2]
     year_str = date_parts[0]
 
-    search_query = (
-        f"{query.home_team} vs {query.away_team} {query.tournament} "
-        f"result score {month_str} {day_str} {year_str}"
+    prompt = (
+        f"Search for the FINAL SCORE of this football match that was played on "
+        f"{month_str} {day_str}, {year_str}:\n"
+        f"{query.home_team} vs {query.away_team} ({query.tournament})\n\n"
+        f"RULES:\n"
+        f"- ONLY report the score if you find it confirmed on a real sports website "
+        f"(FIFA.com, BBC Sport, ESPN, Sky Sports, etc.).\n"
+        f"- If the match has NOT been played yet, or you cannot find a verified result, "
+        f"respond with exactly: RESULT_NOT_FOUND\n"
+        f"- Do NOT guess, estimate, or make up any score.\n"
+        f"- Do NOT report a score if the match is still in progress.\n"
+        f"- If found, state the final score clearly, e.g. '{query.home_team} 2-1 {query.away_team}' "
+        f"and include the source URL."
     )
 
     last_exc = None
@@ -91,33 +103,54 @@ def _fetch_single_result(client: OpenAI, query: MatchQuery, log_fh) -> ActualRes
             response = client.responses.create(
                 model="gpt-4o",
                 tools=[{"type": "web_search_preview"}],
-                input=search_query,
+                input=prompt,
             )
             output_text = response.output_text or ""
 
-            log_fh.write(f"\n=== QUERY: {search_query} ===\n")
+            log_fh.write(f"\n=== QUERY: {query.home_team} vs {query.away_team} {query.date} ===\n")
             log_fh.write(f"RESPONSE:\n{output_text}\n")
+
+            # Explicit not-found signal
+            if "RESULT_NOT_FOUND" in output_text:
+                logger.info(
+                    "No result yet for %s vs %s on %s (agent confirmed not found).",
+                    query.home_team, query.away_team, query.date,
+                )
+                return None
+
+            # Also treat "not been played", "yet to be played", "upcoming" as not found
+            lower = output_text.lower()
+            not_played_phrases = [
+                "not been played", "yet to be played", "upcoming", "has not taken place",
+                "no result", "not yet played", "scheduled", "not available",
+            ]
+            if any(p in lower for p in not_played_phrases):
+                logger.info(
+                    "Match %s vs %s on %s not yet played (detected in response).",
+                    query.home_team, query.away_team, query.date,
+                )
+                return None
 
             # Try to extract score
             scores = _parse_scores_from_text(output_text, query.home_team, query.away_team)
 
             if scores is None:
                 logger.warning(
-                    "Could not parse score for %s vs %s on %s",
+                    "Could not parse score for %s vs %s on %s — skipping (not storing guesses).",
                     query.home_team, query.away_team, query.date,
                 )
-                return ActualResult(
-                    date=query.date,
-                    home_team=query.home_team,
-                    away_team=query.away_team,
-                    home_score=0,
-                    away_score=0,
-                    result="D",
-                    source_url="",
-                    confidence="low",
-                )
+                return None  # Return None, not a fake 0-0
 
             h_goals, a_goals = scores
+
+            # Sanity check: score > 10 is almost certainly hallucinated for a WC match
+            if h_goals > 10 or a_goals > 10:
+                logger.warning(
+                    "Suspicious score %d-%d for %s vs %s — likely hallucinated, skipping.",
+                    h_goals, a_goals, query.home_team, query.away_team,
+                )
+                return None
+
             if h_goals > a_goals:
                 result_code: Literal["H", "D", "A"] = "H"
             elif a_goals > h_goals:
@@ -125,19 +158,19 @@ def _fetch_single_result(client: OpenAI, query: MatchQuery, log_fh) -> ActualRes
             else:
                 result_code = "D"
 
-            # Extract source URL if present
+            # Extract source URL
             source_url = ""
-            import re
             url_match = re.search(r"https?://\S+", output_text)
             if url_match:
                 source_url = url_match.group(0).rstrip(")")
 
-            # Confidence: high if score mentioned clearly, medium if vague
-            lower = output_text.lower()
-            if any(kw in lower for kw in ["final score", "full time", "ft:", "result:"]):
+            # Confidence based on explicit confirmation keywords
+            if any(kw in lower for kw in ["final score", "full time", "ft:", "full-time", "result:"]):
                 confidence: Literal["high", "medium", "low"] = "high"
-            else:
+            elif source_url:
                 confidence = "medium"
+            else:
+                confidence = "low"
 
             return ActualResult(
                 date=query.date,
@@ -181,8 +214,8 @@ def update_completed_results(schedule: dict, today: str) -> int:
 
     to_fetch: list[MatchQuery] = []
     for date_str, matches in sorted(schedule.items()):
-        if date_str > today:
-            break  # don't fetch future matches
+        if date_str >= today:
+            break  # only fetch strictly past dates — today's matches may not have finished
         for home, away, tournament in matches:
             if (home, away, date_str) not in fetched:
                 to_fetch.append(MatchQuery(

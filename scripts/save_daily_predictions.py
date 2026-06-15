@@ -25,24 +25,25 @@ MODELS_DIR = Path(__file__).parents[1] / "models"
 
 # Official WC2026 group stage schedule — dataset-friendly team names
 T = "FIFA World Cup"
+"FIFA World Cup"
 WC2026_SCHEDULE: dict[str, list[tuple[str, str, str]]] = {
-    "2026-06-11": [("Mexico", "South Africa", T), ("South Korea", "Czech Republic", T)],
-    "2026-06-12": [("Canada", "Bosnia-Herzegovina", T), ("USA", "Paraguay", T)],
-    "2026-06-13": [("Haiti", "Scotland", T), ("Australia", "Turkey", T), ("Brazil", "Morocco", T), ("Qatar", "Switzerland", T)],
-    "2026-06-14": [("Ivory Coast", "Ecuador", T), ("Germany", "Curacao", T), ("Netherlands", "Japan", T), ("Sweden", "Tunisia", T)],
-    "2026-06-15": [("Saudi Arabia", "Uruguay", T), ("Spain", "Cape Verde", T), ("Iran", "New Zealand", T), ("Belgium", "Egypt", T)],
-    "2026-06-16": [("France", "Senegal", T), ("Iraq", "Norway", T), ("Argentina", "Algeria", T), ("Austria", "Jordan", T)],
-    "2026-06-17": [("Ghana", "Panama", T), ("England", "Croatia", T), ("Portugal", "DR Congo", T), ("Uzbekistan", "Colombia", T)],
-    "2026-06-18": [("Czech Republic", "South Africa", T), ("Switzerland", "Bosnia-Herzegovina", T), ("Canada", "Qatar", T), ("Mexico", "South Korea", T)],
-    "2026-06-19": [("Brazil", "Haiti", T), ("Scotland", "Morocco", T), ("Turkey", "Paraguay", T), ("USA", "Australia", T)],
-    "2026-06-20": [("Germany", "Ivory Coast", T), ("Ecuador", "Curacao", T), ("Netherlands", "Sweden", T), ("Tunisia", "Japan", T)],
-    "2026-06-21": [("Uruguay", "Cape Verde", T), ("Spain", "Saudi Arabia", T), ("Belgium", "Iran", T), ("New Zealand", "Egypt", T)],
-    "2026-06-22": [("Norway", "Senegal", T), ("France", "Iraq", T), ("Argentina", "Austria", T), ("Jordan", "Algeria", T)],
-    "2026-06-23": [("England", "Ghana", T), ("Panama", "Croatia", T), ("Portugal", "Uzbekistan", T), ("Colombia", "DR Congo", T)],
-    "2026-06-24": [("Scotland", "Brazil", T), ("Morocco", "Haiti", T), ("Switzerland", "Canada", T), ("Bosnia-Herzegovina", "Qatar", T), ("Czech Republic", "Mexico", T), ("South Africa", "South Korea", T)],
-    "2026-06-25": [("Curacao", "Ivory Coast", T), ("Ecuador", "Germany", T), ("Japan", "Sweden", T), ("Tunisia", "Netherlands", T), ("Turkey", "USA", T), ("Paraguay", "Australia", T)],
-    "2026-06-26": [("Norway", "France", T), ("Senegal", "Iraq", T), ("Cape Verde", "Saudi Arabia", T), ("Uruguay", "Spain", T), ("New Zealand", "Belgium", T), ("Egypt", "Iran", T)],
-    "2026-06-27": [("Panama", "England", T), ("Croatia", "Ghana", T), ("Colombia", "Portugal", T), ("DR Congo", "Uzbekistan", T), ("Algeria", "Austria", T), ("Jordan", "Argentina", T)],
+    "2026-06-12": [("Mexico", "South Africa", T), ("South Korea", "Czech Republic", T)],
+    "2026-06-13": [("Canada", "Bosnia-Herzegovina", T), ("USA", "Paraguay", T)],
+    "2026-06-14": [("Qatar", "Switzerland", T), ("Brazil", "Morocco", T), ("Haiti", "Scotland", T), ("Australia", "Turkey", T), ("Germany", "Curacao", T)],
+    "2026-06-15": [("Ivory Coast", "Ecuador", T), ("Netherlands", "Japan", T), ("Sweden", "Tunisia", T), ("Spain", "Cape Verde", T)],
+    "2026-06-16": [("Belgium", "Egypt", T), ("Saudi Arabia", "Uruguay", T), ("Iran", "New Zealand", T)],
+    "2026-06-17": [("France", "Senegal", T), ("Iraq", "Norway", T), ("Argentina", "Algeria", T), ("Austria", "Jordan", T), ("Portugal", "DR Congo", T)],
+    "2026-06-18": [("England", "Croatia", T), ("Ghana", "Panama", T), ("Uzbekistan", "Colombia", T), ("Czech Republic", "South Africa", T)],
+    "2026-06-19": [("Switzerland", "Bosnia-Herzegovina", T), ("Canada", "Qatar", T), ("Mexico", "South Korea", T)],
+    "2026-06-20": [("USA", "Australia", T), ("Scotland", "Morocco", T), ("Brazil", "Haiti", T), ("Turkey", "Paraguay", T), ("Netherlands", "Sweden", T)],
+    "2026-06-21": [("Germany", "Ivory Coast", T), ("Ecuador", "Curacao", T), ("Tunisia", "Japan", T), ("Spain", "Saudi Arabia", T)],
+    "2026-06-22": [("Belgium", "Iran", T), ("Uruguay", "Cape Verde", T), ("New Zealand", "Egypt", T), ("Argentina", "Austria", T)],
+    "2026-06-23": [("France", "Iraq", T), ("Norway", "Senegal", T), ("Jordan", "Algeria", T), ("Portugal", "Uzbekistan", T)],
+    "2026-06-24": [("England", "Ghana", T), ("Panama", "Croatia", T), ("Colombia", "DR Congo", T)],
+    "2026-06-25": [("Switzerland", "Canada", T), ("Bosnia-Herzegovina", "Qatar", T), ("Morocco", "Haiti", T), ("Scotland", "Brazil", T), ("South Africa", "South Korea", T), ("Czech Republic", "Mexico", T)],
+    "2026-06-26": [("Curacao", "Ivory Coast", T), ("Ecuador", "Germany", T), ("Tunisia", "Netherlands", T), ("Japan", "Sweden", T), ("Turkey", "USA", T), ("Paraguay", "Australia", T)],
+    "2026-06-27": [("Norway", "France", T), ("Senegal", "Iraq", T), ("Cape Verde", "Saudi Arabia", T), ("Uruguay", "Spain", T), ("New Zealand", "Belgium", T), ("Egypt", "Iran", T)],
+    "2026-06-28": [("Panama", "England", T), ("Croatia", "Ghana", T), ("Colombia", "Portugal", T), ("DR Congo", "Uzbekistan", T), ("Algeria", "Austria", T), ("Jordan", "Argentina", T)],
 }
 
 
