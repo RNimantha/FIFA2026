@@ -1,11 +1,11 @@
 [phases.setup]
-nixPkgs = ["python311", "gcc"]
+nixPkgs = ["python311", "python311Packages.pip", "gcc"]
 
 [phases.install]
-cmds = ["pip install -r requirements.txt"]
+cmds = ["python3.11 -m pip install -r requirements.txt"]
 
 [phases.build]
-cmds = ["python scripts/build.py"]
+cmds = ["python3.11 scripts/build.py"]
 dependsOn = ["install"]
 
 [start]
