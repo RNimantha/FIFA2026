@@ -4,6 +4,5 @@ dockerfilePath = "Dockerfile"
 buildArgs = { KAGGLE_API_TOKEN = "${{KAGGLE_API_TOKEN}}" }
 
 [deploy]
-startCommand = "uvicorn src.api.main:app --host 0.0.0.0 --port $PORT"
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 3
