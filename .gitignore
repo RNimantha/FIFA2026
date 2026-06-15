@@ -26,9 +26,13 @@ ENV/
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 
-# Data — raw & processed (large files)
+# Data — raw & processed rebuilt at deploy time
 data/raw/
 data/processed/
+
+# Keep actuals and predictions (live results feed state)
+!data/actuals/
+!data/predictions/
 
 # Models (large binaries — use Git LFS or retrain on deploy)
 models/*.pkl
